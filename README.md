@@ -34,7 +34,7 @@ map:
 	# key: map
 	# --
 	@@#include@@#include <map>
-	map<${1:int}, ${2:int}> ${3:m}
+	std::map<${1:int}, ${2:int}> ${3:m}
 	
 Another example of snippet.
 
