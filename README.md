@@ -48,7 +48,7 @@ map:
 	@@#inc@@#include <map>
 	`(progn (save-excursion) (goto-char (point-min)) (unless (re-search-forward
 	"^using\\s-+namespace std;" nil 'no-errer) "std::"))
-	`std::map<${1:int}, ${2:int}> ${3:m}
+	`map<${1:int}, ${2:int}> ${3:m}
 	
 Another example of snippet.
 
