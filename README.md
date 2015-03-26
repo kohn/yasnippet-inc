@@ -53,3 +53,6 @@ popen:
 
 # ATTETION
 DO NOT FORGET to insert your first header file/import file manully to help this plugin locate header file area. If no header file exists, the new header file will be inserted right behind where the snippet expands.
+
+# Acknowledgement
+Thx to zhouchongzxc@newsmth for his help.
