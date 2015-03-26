@@ -1,5 +1,5 @@
 # yasnippet-inc
-Help to include header file automatically when expand yasnippet template. Buffer will be checked to avoid duplicated insertion of header file. The only requirement is that you have to write your first header file manully, otherwise this plugin doesn't know where is the header file area.
+Help to insert header file automatically when expand yasnippet template. Buffer will be checked to avoid duplicated insertion of header file. The only requirement is that you have to write your first header file manully, otherwise this plugin doesn't know where is the header file area.
 
 
 # Install
