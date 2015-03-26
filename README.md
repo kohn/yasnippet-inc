@@ -25,7 +25,7 @@ cin:
 	@@#include@@#include <iostream>
 	std::cin >> 
 	
-When you type "cin" in a c++-mode buffer, and expand this snippet, this plugin will check if you have already inserted "#include <iostream>" in the header, and if not, insert it.
+When you type "cin" in a c++-mode buffer, and expand this snippet, this plugin will check if you have already inserted "#include \<iostream\>" in the header, and if not, insert it.
 
 map:
 
