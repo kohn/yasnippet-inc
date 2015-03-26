@@ -22,8 +22,11 @@ cin:
 	# name: cin
 	# key: cin
 	# --
-	@@#include@@#include <iostream>
-	std::cin >> 
+	@@#inc@@#include <iostream>
+	`(progn (save-excursion) (goto-char (point-min)) (unless (re-search-forward
+	"^using\\s-+namespace std;" nil 'no-errer) "std::"))
+	`cout << $0
+
 	
 When you type "cin" in a c++-mode buffer, and expand this snippet, this plugin will check if you have already inserted "#include \<iostream\>" in the header, and if not, insert it.
 
@@ -33,8 +36,10 @@ map:
 	# name: map
 	# key: map
 	# --
-	@@#include@@#include <map>
-	std::map<${1:int}, ${2:int}> ${3:m}
+	@@#inc@@#include <map>
+	`(progn (save-excursion) (goto-char (point-min)) (unless (re-search-forward
+	"^using\\s-+namespace std;" nil 'no-errer) "std::"))
+	`std::map<${1:int}, ${2:int}> ${3:m}
 	
 Another example of snippet.
 
@@ -48,7 +53,6 @@ popen:
 	# --
 	@@import@@import subprocess
 	subprocess.Popen(${1:cmd}, shell=True)
-
 	
 
 # ATTETION
