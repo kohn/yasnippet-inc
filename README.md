@@ -10,7 +10,16 @@ Update or create new yasnippet, and add header file to the snippet.
 
 The format is:
 
-	@@include_keyword@@include_file
+	@@include_keyword_prefix@@include_file
+where include_keyword_prefix is "#include" for C/C++ and "import" for python etc. 
+
+The code matches the keyword by prefix, so even "#inc" is OK as long as you dont have the code start with the same prefix bofore header file area. For example, a buffer starts with:
+
+	/*
+	some text
+	#include <iostream>
+	*/
+will not work correnctly, becase this plugin doesn't do grammer checking.
 
 
 # Example
