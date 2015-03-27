@@ -19,7 +19,8 @@ The code matches the keyword by prefix, so even "#inc" is OK as long as you dont
 	some text
 	#include <iostream>
 	*/
-will not work correnctly, becase this plugin doesn't do grammer checking.
+    
+will not work correctly, because this plugin doesn't do grammer checking.
 
 
 # Example
