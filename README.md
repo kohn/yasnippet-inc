@@ -23,6 +23,8 @@ The code matches the keyword by prefix, so even "#inc" is OK as long as you dont
     
 will not work correctly, because this plugin doesn't do grammer checking.
 
+# Workflow
+This piece of code firstly check lines of template contents start with "@@", and split the lines into 3 fileds. Then check from the start of the buffer to find the first line starts with include_keyword_prefix. From that line on, check line by line to see if the header file has already inserted, until finally meet a line that is not a comment(starts with comment_keyword) nor a blank line, nor a header file.
 
 # Example
 
