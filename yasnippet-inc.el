@@ -1,4 +1,4 @@
-(defun yas-insert-include-check-and-insert (inc prefix endline start-marker)
+(defun yas-insert-include-check-and-insert (inc prefix endline start-marker comment-keyword)
   (save-excursion
   (goto-char (point-min))
   (let ((flag nil) (one-line (buffer-substring-no-properties (line-beginning-position) (line-end-position))))
@@ -10,7 +10,12 @@
               (return-from find-start-line)
             (setq one-line (buffer-substring-no-properties (line-beginning-position) (line-end-position))))))
     (block check
-      (while (string-prefix-p prefix one-line )
+      (print comment-keyword)
+      (while (or (string-prefix-p prefix one-line) 
+                 (equal one-line "")
+                 (if comment-keyword
+                     (string-prefix-p comment-keyword one-line)
+                   nil))
         (if (string= one-line inc)
             (progn (setq flag t) (return-from check))
           (if (= (forward-line 1) 1)
@@ -29,7 +34,7 @@
 (defun yas-insert-include ()
   (if (or (equal start nil) (equal end nil))
       (print "yas-new-snippet")
-      (let ((dist (- end start)) (new-content "") inc content-in-lines delimiter
+      (let ((dist (- end start)) (new-content "") inc content-in-lines delimiter comment-keyword
             (snippet-line-number (line-number-at-pos (point))))
         (goto-char start)
         (setq start (point-marker))
@@ -39,7 +44,9 @@
                   (progn
                     (setq delimiter (nth 1 (split-string content-one-line "@@")))
                     (setq inc (nth 2 (split-string content-one-line "@@")))
-                    (yas-insert-include-check-and-insert inc delimiter snippet-line-number start))
+                    (setq comment-keyword (nth 3 (split-string content-one-line "@@")))
+                    (print comment-keyword)
+                    (yas-insert-include-check-and-insert inc delimiter snippet-line-number start comment-keyword))
                 (progn (setq new-content (concat new-content content-one-line "\n")))))
         (setq end (+ start dist))
         (setq content (substring new-content 0 -1)))))

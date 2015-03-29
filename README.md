@@ -10,8 +10,9 @@ Update or create new yasnippet, and add header file to the snippet.
 
 The format is:
 
-	@@include_keyword_prefix@@include_file
-where include_keyword_prefix is "#include" for C/C++ and "import" for python etc. 
+	@@include_keyword_prefix@@include_file@@comment_symbol
+    
+where include_keyword_prefix is "#include" for C/C++ and "import" for python etc. comment_symbol is "//" for C++ and "#" for python etc. Note that open-close like comment like "/* */" for C is currently not supported.
 
 The code matches the keyword by prefix, so even "#inc" is OK as long as you dont have the code start with the same prefix bofore header file area. For example, a buffer starts with:
 
@@ -32,13 +33,13 @@ cin:
 	# name: cin
 	# key: cin
 	# --
-	@@#inc@@#include <iostream>
+	@@#inc@@#include <iostream>@@//
 	`(progn (save-excursion) (goto-char (point-min)) (unless (re-search-forward
 	"^using\\s-+namespace std;" nil 'no-errer) "std::"))
 	`cout << $0
 
 	
-When you type "cin" in a c++-mode buffer, and expand this snippet, this plugin will check if you have already inserted "#include \<iostream\>" in the header, and if not, insert it.
+When you type "cin" in a c++-mode buffer, and expand the snippet, this plugin will check if you have already inserted "#include \<iostream\>" in the header, and if not, insert it.
 
 map:
 
@@ -46,7 +47,7 @@ map:
 	# name: map
 	# key: map
 	# --
-	@@#inc@@#include <map>
+	@@#inc@@#include <map>@@//
 	`(progn (save-excursion) (goto-char (point-min)) (unless (re-search-forward
 	"^using\\s-+namespace std;" nil 'no-errer) "std::"))
 	`map<${1:int}, ${2:int}> ${3:m}
@@ -61,12 +62,12 @@ popen:
 	# name: popen
 	# key: popen
 	# --
-	@@import@@import subprocess
+	@@import@@import subprocess@@#
 	subprocess.Popen(${1:cmd}, shell=True)
 	
 
 # ATTETION
-DO NOT FORGET to insert your first header file/import file manully to help this plugin locate header file area. If no header file exists, the new header file will be inserted right behind where the snippet expands.
+DO NOT FORGET to insert your first header file/import file manully to help this plugin locate header file area. If no header file exists, the new header file will be inserted right behind where the snippet expands. 
 
 # Acknowledgement
 Thx to zhouchongzxc@newsmth for his help.
