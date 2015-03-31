@@ -12,6 +12,7 @@
     (block check
       (print comment-keyword)
       (while (or (string-prefix-p prefix one-line) 
+                 (equal one-line "")
                  (if comment-keyword
                      (string-prefix-p comment-keyword one-line)
                    nil))
@@ -50,4 +51,3 @@
         (setq end (+ start dist))
         (setq content (substring new-content 0 -1)))))
 (add-hook 'yas/before-expand-snippet-hook 'yas-insert-include)
-
