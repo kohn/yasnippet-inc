@@ -12,7 +12,6 @@
     (block check
       (print comment-keyword)
       (while (or (string-prefix-p prefix one-line) 
-                 (equal one-line "")
                  (if comment-keyword
                      (string-prefix-p comment-keyword one-line)
                    nil))
