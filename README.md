@@ -56,6 +56,8 @@ map:
 	
 Another example of snippet.
 
+![example](http://7sbksy.com1.z0.glb.clouddn.com/yas-include.gif)
+
 ## python
 
 popen:
